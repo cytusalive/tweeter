@@ -8,6 +8,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: -1;
 }
 
 nav .tweeter {
@@ -16,7 +17,7 @@ nav .tweeter {
   align-self: flex-end;
 }
 
-nav .write {
+nav .new {
   display: flex;
   justify-content: center;
   flex-direction: column;
