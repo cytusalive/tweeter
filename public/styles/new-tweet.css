@@ -16,7 +16,7 @@ textarea {
   resize: none;
 }
 
-.new-tweet div {
+.new-tweet #underTextArea {
   font-family: 'Bungee';
   display: flex;
   justify-content: space-between;
@@ -33,4 +33,6 @@ button {
   border: none;
 } 
 
-
+.counter {
+  color: #545149;
+}
