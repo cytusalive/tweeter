@@ -5,14 +5,15 @@
 }
 
 textarea {
+  width: 100%;
+  height: 1.5em;
   background-color: #f4f1ec;
-  border-bottom: #545149;
   border-bottom-style: solid;
   border-top:none;
   border-left:none;
   border-right:none;
-  width: 100%;
-  height: 1.5em;
+  border-bottom: #545149;
+  resize: none;
 }
 
 .new-tweet div {
