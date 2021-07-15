@@ -4,6 +4,12 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 const createTweetElement = function(tweet) {
   const $tweet = $(
     `<article class="tweet">
@@ -14,7 +20,7 @@ const createTweetElement = function(tweet) {
         </div>
         <span class="handle">${tweet.user.handle}</span>
       </header>
-      <p class="tweet-content">${tweet.content.text}</p>
+      <p class="tweet-content">${escape(tweet.content.text)}</p>
       <footer class="tweet-footer">
         <span class="date">${timeago.format(tweet.created_at)}</span>
         <div class="icon-row">
@@ -30,7 +36,8 @@ const createTweetElement = function(tweet) {
 
 const renderTweets = function(tweets, container) {
   container.empty();
-  for (const tweet of tweets) {
+  const sortedTweets = tweets.sort((a, b) => b.created_at - a.created_at);
+  for (const tweet of sortedTweets) {
     container.append(createTweetElement(tweet));
   }
 }
@@ -52,7 +59,6 @@ $(document).ready(() => {
       alert("Tweet is too long.");
     } else {
       const formData = $(this).serialize();
-      console.log(formData);
       $.post("/tweets", formData, () => {
         loadTweets().then((allTweets) => {
           renderTweets(allTweets, $(".tweet-container"));
