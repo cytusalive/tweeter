@@ -1,3 +1,13 @@
+.emptyError {
+  border: solid red;
+  padding: 1em;
+}
+
+.fullError {
+  border: solid red;
+  padding: 1em;
+}
+
 .new-tweet form {
   display: flex;
   flex-direction: column;
@@ -24,15 +34,6 @@ textarea {
   margin-top: 10px;
 }
 
-/* button {
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  background-color: #4056a1;
-  color: white;
-  border: none;
-}  */
 button {
   padding-left: 15px;
   padding-right: 15px;

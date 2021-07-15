@@ -47,16 +47,20 @@ const loadTweets = function() {
 }
 
 $(document).ready(() => {
+  $(".emptyError").hide();
+  $(".fullError").hide();
   loadTweets().then((allTweets) => {
     renderTweets(allTweets, $(".tweet-container"));
   });
   $("form").on("submit", function(event) {
     event.preventDefault();
+    $(".emptyError").hide();
+    $(".fullError").hide();
     const tweetLen = $("#tweet-text")['0'].value.length;
     if (!tweetLen) {
-      alert("Tweet cannot be empty.");
+      $(".emptyError").slideDown();
     } else if (tweetLen > 140) {
-      alert("Tweet is too long.");
+      $(".fullError").slideDown();
     } else {
       const formData = $(this).serialize();
       $.post("/tweets", formData, () => {

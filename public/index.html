@@ -54,6 +54,12 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
+        <div class="emptyError">
+          🚫 Your Tweet cannot be empty. 🚫 
+        </div>
+        <div class="fullError">
+          🚫 Your Tweet is too long. 🚫
+        </div>
         <h2>Compose Tweet</h2>
         <form action="/tweets/" method="POST">
           <textarea name="text" placeholder="What are you humming about?" id="tweet-text"></textarea>
