@@ -24,7 +24,7 @@ textarea {
   margin-top: 10px;
 }
 
-button {
+/* button {
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 5px;
@@ -32,7 +32,28 @@ button {
   background-color: #4056a1;
   color: white;
   border: none;
-} 
+}  */
+button {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: white;
+  background-color: #697fc9;
+  border: none;
+}
+
+button:hover {
+  background-color: #4056a1;
+}
+
+button:active {
+  background-color: #112c86;
+  transform: translateY(2px);
+}
 
 .counter {
   color: #545149;
