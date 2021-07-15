@@ -3,30 +3,6 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-];
 
 const createTweetElement = function(tweet) {
   const $tweet = $(
@@ -47,17 +23,43 @@ const createTweetElement = function(tweet) {
           <i class="fas fa-heart"></i>
         </div>
       </footer>
-    </article>`,
-  )
+    </article>`
+    )
   return $tweet;
 }
 
 const renderTweets = function(tweets, container) {
+  container.empty();
   for (const tweet of tweets) {
     container.append(createTweetElement(tweet));
   }
 }
 
+const loadTweets = function() {
+  return $.ajax("/tweets", { method: 'GET' });
+}
+
 $(document).ready(() => {
-  renderTweets(data, $(".tweet-container"));
+  loadTweets().then((allTweets) => {
+    renderTweets(allTweets, $(".tweet-container"));
+  });
+  $("form").on("submit", function(event) {
+    event.preventDefault();
+    const tweetLen = $("#tweet-text")['0'].value.length;
+    if (!tweetLen) {
+      alert("Tweet cannot be empty.");
+    } else if (tweetLen > 140) {
+      alert("Tweet is too long.");
+    } else {
+      const formData = $(this).serialize();
+      console.log(formData);
+      $.post("/tweets", formData, () => {
+        loadTweets().then((allTweets) => {
+          renderTweets(allTweets, $(".tweet-container"));
+        });
+        $("textarea").val('');
+      })
+    }
+  })
 });
+
