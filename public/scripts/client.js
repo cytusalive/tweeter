@@ -5,42 +5,42 @@
  */
 const data = [
   {
-    user: {
-      name: 'Rhoda Jacobs',
-      avatar: 'https://i.imgur.com/nlhLi3I.png',
-      handle: '@MrsJacobs',
+    "user": {
+      "name": "Newton",
+      "avatars": "https://i.imgur.com/73hZDYK.png"
+      ,
+      "handle": "@SirIsaac"
     },
-    content: {
-      text: 'Hello World!',
+    "content": {
+      "text": "If I have seen further it is by standing on the shoulders of giants"
     },
-    created_at: Date.now(),
+    "created_at": 1461116232227
   },
   {
-    user: {
-      name: 'Newton',
-      avatar: 'https://i.imgur.com/73hZDYK.png',
-      handle: '@SirIsaac',
+    "user": {
+      "name": "Descartes",
+      "avatars": "https://i.imgur.com/nlhLi3I.png",
+      "handle": "@rd" },
+    "content": {
+      "text": "Je pense , donc je suis"
     },
-    content: {
-      text: 'If I have seen further it is by standing on the shoulders of giants',
-    },
-    created_at: Date.now() - 111111111,
+    "created_at": 1461113959088
   }
 ];
 
-const createTweet = function(tweet) {
+const createTweetElement = function(tweet) {
   const $tweet = $(
     `<article class="tweet">
       <header class="tweet-header">
         <div class="user">
-          <img src="${tweet.user.avatar}" alt="user avatar">
+          <img src="${tweet.user.avatars}" alt="user avatar">
           <span class="username">${tweet.user.name}</span>
         </div>
         <span class="handle">${tweet.user.handle}</span>
       </header>
       <p class="tweet-content">${tweet.content.text}</p>
       <footer class="tweet-footer">
-        <span class="date">${new Date(tweet.created_at)}</span>
+        <span class="date">${timeago.format(tweet.created_at)}</span>
         <div class="icon-row">
           <i class="fas fa-flag"></i>
           <i class="fas fa-retweet"></i>
@@ -53,8 +53,8 @@ const createTweet = function(tweet) {
 }
 
 const renderTweets = function(tweets, container) {
-  for (const tweet of data) {
-    container.append(createTweet(tweet));
+  for (const tweet of tweets) {
+    container.append(createTweetElement(tweet));
   }
 }
 
