@@ -7,6 +7,10 @@ article {
   padding-top: 0;
 }
 
+.tweet:hover{
+  box-shadow: 10px 10px lightgray;
+}
+
 .tweet-header {
   display: flex;
   height: 100px;
@@ -45,4 +49,8 @@ article {
 
 .icon-row {
   color: #4056A1;
+}
+
+.icon-row i:hover{
+  color: goldenrod;
 }
