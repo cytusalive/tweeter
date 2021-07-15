@@ -4,7 +4,7 @@ article {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
   padding: 1em;
-  padding-top: 0;
+  padding-top: 0.25em;
 }
 
 .tweet:hover{
@@ -17,7 +17,8 @@ article {
   background-image: none;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #f4f1ec;
+  align-items: center; 
+  background-color: #f4f1ec; 
 }
 
 .user {
