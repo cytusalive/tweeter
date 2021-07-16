@@ -28,3 +28,7 @@ nav .new {
 nav .fas {
   color: tomato;
 }
+
+nav .new:hover .fas{
+  color:red;
+} 
