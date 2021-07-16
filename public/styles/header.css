@@ -7,14 +7,14 @@
   flex-direction: column;
   background-color: aliceblue;
   background-image: url("https://www.transparenttextures.com/patterns/mirrored-squares.png");
-  margin-top: 90px;
+  margin-top: 120px;
 }
 
 @media only screen and (min-width: 1024px) {
   .user-header {
     width: 32.5%;
-    float: left;
-    margin-top: 120px;
+    float: left;  
+    margin-top: 150px;
     margin-left: 2.5%;
     position: fixed;
   }

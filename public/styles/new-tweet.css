@@ -28,7 +28,7 @@ textarea {
 }
 
 .new-tweet #underTextArea {
-  font-family: 'Bungee';
+  font-family: 'Bungee', cursive;
   display: flex;
   justify-content: space-between;
   margin-top: 10px;

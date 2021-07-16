@@ -4,6 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+// Function to prevent injection attacks
 const escape = function (str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
@@ -34,6 +35,8 @@ const createTweetElement = function(tweet) {
   return $tweet;
 }
 
+// Clears the loaded tweets 
+// Then append a new array of tweets sorted by date
 const renderTweets = function(tweets, container) {
   container.empty();
   const sortedTweets = tweets.sort((a, b) => b.created_at - a.created_at);
@@ -47,13 +50,17 @@ const loadTweets = function() {
 }
 
 $(document).ready(() => {
+  // Hide errors on default
   $(".emptyError").hide();
   $(".fullError").hide();
+  // Display existing tweets
   loadTweets().then((allTweets) => {
     renderTweets(allTweets, $(".tweet-container"));
   });
+  // When new tweet is submitted, prevents refreshing or redirecting
   $("form").on("submit", function(event) {
     event.preventDefault();
+    // Display errors if found any
     $(".emptyError").hide();
     $(".fullError").hide();
     const tweetLen = $("#tweet-text")['0'].value.length;
@@ -62,11 +69,13 @@ $(document).ready(() => {
     } else if (tweetLen > 140) {
       $(".fullError").slideDown();
     } else {
+      // If no errors, send URL encoded data to create a tweet
       const formData = $(this).serialize();
       $.post("/tweets", formData, () => {
         loadTweets().then((allTweets) => {
           renderTweets(allTweets, $(".tweet-container"));
         });
+        // Clears input box once tweeting succeeds 
         $("textarea").val('');
       })
     }
